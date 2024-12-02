@@ -13,7 +13,6 @@ defmodule ProblemDampener do
       false -> safety_dampener(level, damped_item - 1)
       true -> true
     end
-
   end
 
   def safety_dampener(_, _) do

@@ -13,7 +13,7 @@ levels = ParserDay2.parse("""
 """)
 
 levels
-|> Stream.map(&(ProblemDampener.safety_dampener(&1)))
+|> Stream.map(&ProblemDampener.safety_dampener/1)
 |> Stream.filter(&(&1))
 |> Enum.to_list()
 |> IO.inspect
@@ -23,7 +23,7 @@ IO.puts("Part B:")
 File.read("lib/day_2/input.txt")
   |> then(fn {:ok, input} -> input end)
   |> ParserDay2.parse()
-  |> Stream.map(&(ProblemDampener.safety_dampener(&1)))
+  |> Stream.map(&ProblemDampener.safety_dampener/1)
   |> Stream.filter(&(&1))
   |> Enum.count()
   |> IO.inspect

@@ -17,11 +17,11 @@ defmodule SafeLevels do
   end
 
 
-  def is_level_safe([last], _) do
+  def is_level_safe([_], _) do
     true
   end
 
-  def is_level_safe([current | tail], _) do
+  def is_level_safe([_ | _], _) do
     false
   end
 

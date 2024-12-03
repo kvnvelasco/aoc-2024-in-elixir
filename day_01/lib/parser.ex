@@ -7,14 +7,14 @@ defmodule Parser do
   end
 
   @spec parse_input(list(String.t()), [input_pairs()]) :: list(input_pairs())
-  defp parse_input([head| tail], final_list) do
+  defp parse_input([head | tail], final_list) do
     [first, second] = String.split(head, " ", parts: 2, trim: true)
 
-    trim_parse = (& (&1 |> String.trim |> String.to_integer))
+    trim_parse = &(&1 |> String.trim() |> String.to_integer())
 
     parse_input(
       tail,
-      final_list ++ [ {trim_parse.(first), trim_parse.(second)} ]
+      final_list ++ [{trim_parse.(first), trim_parse.(second)}]
     )
   end
 

@@ -1,8 +1,8 @@
 defmodule Operations do
-  @doc"""
+  @doc """
   Takes a set of paired inputs and splits them out into two lists
   """
-  @spec unzip([Parser.input_pairs()]) :: { [number()] , [number()]}
+  @spec unzip([Parser.input_pairs()]) :: {[number()], [number()]}
   def unzip(list) do
     unzip(list, [], [])
   end

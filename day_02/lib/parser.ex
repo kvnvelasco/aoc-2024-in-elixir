@@ -1,4 +1,4 @@
-defmodule ParserDay2 do
+defmodule Parser do
   def parse(input) do
     input
     |> String.split("\n", trim: true)

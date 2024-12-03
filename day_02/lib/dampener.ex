@@ -8,7 +8,7 @@ defmodule ProblemDampener do
     safety_dampener(level, 0..length(level))
   end
 
-  def safety_dampener(level, index..limit) when index != limit do
+  def safety_dampener(level, index..limit) when index < limit do
     case SafeLevels.is_level_safe(List.delete_at(level, index)) do
       false -> safety_dampener(level, (index + 1)..limit)
       true -> true

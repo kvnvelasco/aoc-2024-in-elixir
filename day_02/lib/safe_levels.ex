@@ -8,11 +8,11 @@ defmodule SafeLevels do
     end
   end
 
-  def is_level_safe([current, next | tail], :desc) when current-next > 0 and current-next < 4 do
+  def is_level_safe([current, next | tail], :desc) when (current - next) in 1..3 do
     is_level_safe([next | tail], :desc)
   end
 
-  def is_level_safe([current, next | tail], :asc) when next-current > 0 and next-current < 4 do
+  def is_level_safe([current, next | tail], :asc) when (next-current) in 1..3 do
     is_level_safe([next | tail], :asc)
   end
 

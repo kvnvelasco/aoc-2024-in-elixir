@@ -6,10 +6,11 @@ defmodule Parser do
   end
 
   defp parse([line | lines], output) do
-    level = line
-            |> String.trim()
-            |> String.split(" ")
-            |> Enum.map(&(String.to_integer(&1)))
+    level =
+      line
+      |> String.trim()
+      |> String.split(" ")
+      |> Enum.map(&String.to_integer(&1))
 
     parse(lines, [level | output])
   end

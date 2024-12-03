@@ -1,5 +1,4 @@
 defmodule SafeLevels do
-
   def is_level_safe([current, next | _] = list) do
     cond do
       current > next -> is_level_safe(list, :desc)
@@ -22,10 +21,9 @@ defmodule SafeLevels do
     is_level_safe([next | tail], :desc)
   end
 
-  def is_level_safe([current, next | tail], :asc) when (next-current) in 1..3 do
+  def is_level_safe([current, next | tail], :asc) when (next - current) in 1..3 do
     is_level_safe([next | tail], :asc)
   end
-
 
   # We made it to the end of the list and there is nothing next to compare to
   # All conditions must have passed in the above two recursions to make it here,
@@ -40,5 +38,4 @@ defmodule SafeLevels do
   def is_level_safe([_ | _], _) do
     false
   end
-
 end

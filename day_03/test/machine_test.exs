@@ -1,14 +1,26 @@
+defmodule CountOperator do
+  defstruct count: 0
+end
+
+
+defimpl Operator, for: CountOperator do
+  def operate(%{count: count} = state, <<_, tail::binary>>) do
+    { %{state | :count => count + 1}, tail }
+  end
+end
+
 defmodule MachineTest do
   use ExUnit.Case
 
   test "machine runs to completion" do
-    state =
+    %{count: count} =
       Machine.run_machine(
         "1234567910",
-        fn <<_x, tail::binary>>, state -> {state + 1, tail} end,
-        0
+        %CountOperator{}
       )
 
-    assert state == 10
+    assert count == 10
   end
 end
+
+

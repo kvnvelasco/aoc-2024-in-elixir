@@ -53,9 +53,9 @@ defimpl Operator, for: DoDontMachine do
     OperationMatcher.dont_inst(input)
     |> DoDontMachine.test_cond_map(&{%{state | :enabled => false}, &1})
     || OperationMatcher.do_inst(input)
-       |> DoDontMachine.test_cond_map(&{%{state | :enabled => true}, &1})
+    |> DoDontMachine.test_cond_map(&{%{state | :enabled => true}, &1})
     || OperationMatcher.mul(input)
-       |> DoDontMachine.test_cond_map(fn {product, rest} ->
+    |> DoDontMachine.test_cond_map(fn {product, rest} ->
       if enabled,
          do: {%{state | :total => total + product}, rest},
          else: {state, rest}
